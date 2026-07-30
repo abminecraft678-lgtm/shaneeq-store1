@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Shopping Bag | Shaneeq</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a href="index.html" class="logo">SHANEEQ<span>.</span></a>
+    <nav class="main-nav"><a href="shop.html">Continue Shopping</a></nav>
+    <div class="nav-icons"><a href="tel:03134356819" class="phone"><i class="fa-solid fa-phone"></i>&nbsp; 0313-4356819</a></div>
+  </div>
+</header>
+
+<section class="page-header">
+  <h1>Your Shopping Bag</h1>
+  <div class="crumbs"><a href="index.html">Home</a> / <span>Bag</span></div>
+</section>
+
+<section class="container" style="padding: 60px 24px 100px; display:grid; grid-template-columns: 1.4fr 1fr; gap:60px;">
+  <div id="full-cart-items"></div>
+  <div>
+    <div style="background:#fff; border:1px solid var(--color-line); border-radius:10px; padding:26px;">
+      <h3 style="margin-bottom:20px;">Order Total</h3>
+      <div class="cart-total-row" id="full-cart-total"><span>Subtotal</span><span>Rs. 0</span></div>
+      <a href="checkout.html" class="btn btn-primary btn-block" style="margin-top:16px;">Proceed to Checkout</a>
+      <a href="shop.html" class="btn btn-outline btn-block" style="margin-top:12px;">Continue Shopping</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer" id="site-footer"></footer>
+
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+<script src="js/footer.js"></script>
+<script>
+  function renderFullCart() {
+    const cart = getCart();
+    const wrap = document.getElementById('full-cart-items');
+    const totalWrap = document.getElementById('full-cart-total');
+
+    if (cart.length === 0) {
+      wrap.innerHTML = `<div class="empty-state"><i class="fa-solid fa-bag-shopping"></i><p>Your bag is empty.</p></div>`;
+      totalWrap.innerHTML = '';
+      return;
+    }
+
+    wrap.innerHTML = cart.map((item, idx) => `
+      <div class="cart-item" style="align-items:center;">
+        <img src="${item.image}" alt="${item.name}">
+        <div class="cart-item-info">
+          <h5>${item.name}</h5>
+          <div class="cart-item-meta">${item.size ? 'Size: ' + item.size : ''} ${item.color ? '| ' + item.color : ''}</div>
+          <div class="qty-control">
+            <button onclick="updateCartQty(${idx}, -1); renderFullCart();">−</button>
+            <span>${item.quantity}</span>
+            <button onclick="updateCartQty(${idx}, 1); renderFullCart();">+</button>
+            <span style="margin-left:auto; font-weight:600;">${money(item.price * item.quantity)}</span>
+          </div>
+          <button class="remove-item" onclick="removeFromCart(${idx}); renderFullCart();">Remove</button>
+        </div>
+      </div>
+    `).join('');
+
+    totalWrap.innerHTML = `<span>Subtotal</span><span>${money(cartSubtotal())}</span>`;
+  }
+
+  document.addEventListener('DOMContentLoaded', renderFullCart);
+</script>
+</body>
+</html>

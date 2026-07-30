@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Confirmed | Shaneeq</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a href="index.html" class="logo">SHANEEQ<span>.</span></a>
+    <nav class="main-nav"><a href="shop.html">Continue Shopping</a></nav>
+    <div class="nav-icons"><a href="tel:03134356819" class="phone"><i class="fa-solid fa-phone"></i>&nbsp; 0313-4356819</a></div>
+  </div>
+</header>
+
+<section class="container" style="padding:100px 24px; text-align:center; max-width:600px;">
+  <i class="fa-solid fa-circle-check reveal in-view" style="font-size:4rem; color:var(--color-success); margin-bottom:24px;"></i>
+  <h1 class="reveal in-view" style="margin-bottom:14px;">Order Placed Successfully!</h1>
+  <p class="reveal in-view" style="color:var(--color-ink-soft); margin-bottom:10px;">Thank you for shopping with Shaneeq. Your order will be confirmed by our team shortly and delivered via Cash on Delivery.</p>
+  <p class="reveal in-view" style="margin-bottom:36px;">Your Order ID: <strong id="order-id-display" style="color:var(--color-maroon); font-size:1.2rem;"></strong></p>
+  <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+    <a href="track-order.html" class="btn btn-outline">Track This Order</a>
+    <a href="shop.html" class="btn btn-primary">Continue Shopping</a>
+  </div>
+</section>
+
+<footer class="site-footer" id="site-footer"></footer>
+
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+<script src="js/footer.js"></script>
+<script>
+  const orderId = new URLSearchParams(window.location.search).get('orderId');
+  document.getElementById('order-id-display').textContent = orderId || 'N/A';
+</script>
+</body>
+</html>

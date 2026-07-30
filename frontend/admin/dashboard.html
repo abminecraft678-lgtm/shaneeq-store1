@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard | Shaneeq</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<div class="admin-layout">
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="a-sidebar">
+    <div class="logo">SHANEEQ<span>.</span></div>
+    <div class="a-nav-item active" data-section="dashboard"><i class="fa-solid fa-gauge"></i><span>Dashboard</span></div>
+    <div class="a-nav-item" data-section="products"><i class="fa-solid fa-shirt"></i><span>Products</span></div>
+    <div class="a-nav-item" data-section="orders"><i class="fa-solid fa-box"></i><span>Orders</span></div>
+    <div class="a-nav-item" data-section="reviews"><i class="fa-solid fa-star"></i><span>Reviews</span></div>
+  </aside>
+
+  <!-- ===================== MAIN ===================== -->
+  <main class="a-main">
+
+    <div class="a-topbar">
+      <h1 id="section-title">Dashboard</h1>
+      <div class="a-admin-badge">
+        <span id="admin-name-display"><i class="fa-solid fa-circle-user"></i> Admin</span>
+        <button class="a-logout-btn" onclick="adminLogout()">Logout</button>
+      </div>
+    </div>
+
+    <!-- ============ DASHBOARD SECTION ============ -->
+    <section class="a-section active" id="section-dashboard">
+      <div class="a-stat-grid">
+        <div class="a-stat-card"><i class="fa-solid fa-shirt"></i><div class="a-stat-value" id="stat-products">0</div><div class="a-stat-label">Total Products</div></div>
+        <div class="a-stat-card"><i class="fa-solid fa-box"></i><div class="a-stat-value" id="stat-orders">0</div><div class="a-stat-label">Total Orders</div></div>
+        <div class="a-stat-card"><i class="fa-solid fa-hourglass-half"></i><div class="a-stat-value" id="stat-pending">0</div><div class="a-stat-label">Pending Orders</div></div>
+        <div class="a-stat-card"><i class="fa-solid fa-money-bill-wave"></i><div class="a-stat-value" id="stat-revenue">Rs. 0</div><div class="a-stat-label">Total Revenue</div></div>
+      </div>
+      <div class="a-panel">
+        <div class="a-panel-head"><h3>Welcome to the Shaneeq Admin Portal</h3></div>
+        <p style="color:var(--a-muted); font-size:0.9rem; line-height:1.7;">
+          Use the sidebar to manage your product catalog, review incoming Cash-on-Delivery orders,
+          and moderate customer reviews. All changes reflect on the live storefront immediately.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ PRODUCTS SECTION ============ -->
+    <section class="a-section" id="section-products">
+      <div class="a-panel">
+        <div class="a-panel-head">
+          <h3>Manage Products</h3>
+          <button class="a-btn-sm gold" onclick="openProductModal()"><i class="fa-solid fa-plus"></i> Add Product</button>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="a-table">
+            <thead>
+              <tr><th>Image</th><th>Name</th><th>Category</th><th>Type</th><th>Price</th><th>Stock</th><th>Featured</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="products-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ORDERS SECTION ============ -->
+    <section class="a-section" id="section-orders">
+      <div class="a-panel">
+        <div class="a-panel-head"><h3>Customer Orders</h3></div>
+        <div style="overflow-x:auto;">
+          <table class="a-table">
+            <thead>
+              <tr><th>Order ID</th><th>Customer</th><th>Phone</th><th>Items</th><th>Total</th><th>Status</th><th>Date</th></tr>
+            </thead>
+            <tbody id="orders-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ REVIEWS SECTION ============ -->
+    <section class="a-section" id="section-reviews">
+      <div class="a-panel">
+        <div class="a-panel-head"><h3>Customer Reviews</h3></div>
+        <div style="overflow-x:auto;">
+          <table class="a-table">
+            <thead>
+              <tr><th>Product</th><th>Name</th><th>Rating</th><th>Comment</th><th>Date</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="reviews-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ===================== PRODUCT MODAL ===================== -->
+<div class="a-modal-overlay" id="product-modal-overlay">
+  <div class="a-modal">
+    <span class="a-modal-close" onclick="closeProductModal()"><i class="fa-solid fa-xmark"></i></span>
+    <h3 id="product-modal-title">Add Product</h3>
+    <form id="product-form">
+      <input type="hidden" id="product-id">
+      <div class="a-form-grid">
+        <div class="a-form-group full">
+          <label>Product Name</label>
+          <input type="text" id="p-name" required>
+        </div>
+        <div class="a-form-group full">
+          <label>Description</label>
+          <textarea id="p-description" rows="3" required></textarea>
+        </div>
+        <div class="a-form-group">
+          <label>Category</label>
+          <select id="p-category" required>
+            <option value="Men">Men</option>
+            <option value="Women">Women</option>
+            <option value="Kids">Kids</option>
+          </select>
+        </div>
+        <div class="a-form-group">
+          <label>Type</label>
+          <select id="p-type" required>
+            <option value="Stitched">Stitched</option>
+            <option value="Unstitched">Unstitched</option>
+          </select>
+        </div>
+        <div class="a-form-group">
+          <label>Price (Rs.)</label>
+          <input type="number" id="p-price" required min="0">
+        </div>
+        <div class="a-form-group">
+          <label>Discount Price (optional)</label>
+          <input type="number" id="p-discount-price" min="0">
+        </div>
+        <div class="a-form-group">
+          <label>Fabric</label>
+          <input type="text" id="p-fabric" placeholder="e.g. Lawn, Khaddar">
+        </div>
+        <div class="a-form-group">
+          <label>Stock Quantity</label>
+          <input type="number" id="p-stock" required min="0">
+        </div>
+        <div class="a-form-group full">
+          <label>Sizes (comma separated)</label>
+          <input type="text" id="p-sizes" placeholder="S, M, L, XL">
+        </div>
+        <div class="a-form-group full">
+          <label>Colors (comma separated)</label>
+          <input type="text" id="p-colors" placeholder="Black, Maroon, Navy">
+        </div>
+        <div class="a-form-group full">
+          <label>Image URLs (comma separated)</label>
+          <input type="text" id="p-images" placeholder="https://... , https://...">
+        </div>
+        <div class="a-form-group">
+          <label><input type="checkbox" id="p-featured"> Featured on homepage</label>
+        </div>
+        <div class="a-form-group">
+          <label><input type="checkbox" id="p-new"> Mark as New Arrival</label>
+        </div>
+      </div>
+      <button type="submit" class="a-btn-sm gold" style="width:100%; margin-top:16px; padding:12px;">Save Product</button>
+    </form>
+  </div>
+</div>
+
+<script src="../js/config.js"></script>
+<script src="js/admin-auth.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

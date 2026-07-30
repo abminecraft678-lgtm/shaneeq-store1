@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login | Shaneeq</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<div class="admin-login-wrap">
+  <div class="admin-login-card">
+    <div class="logo">SHANEEQ<span>.</span></div>
+    <p class="subtitle">ADMIN PORTAL &mdash; Authorized Access Only</p>
+
+    <div class="a-error" id="login-error"></div>
+
+    <form id="admin-login-form">
+      <div class="a-form-group">
+        <label>Email Address</label>
+        <input type="email" id="admin-email" required autocomplete="username">
+      </div>
+      <div class="a-form-group">
+        <label>Password</label>
+        <input type="password" id="admin-password" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="a-btn" id="login-btn">Sign In</button>
+    </form>
+
+    <p style="text-align:center; font-size:0.78rem; color:var(--a-muted); margin-top:22px;">
+      &larr; <a href="../index.html" style="color:var(--a-muted);">Back to Shaneeq storefront</a>
+    </p>
+  </div>
+</div>
+
+<script src="../js/config.js"></script>
+<script src="js/admin-auth.js"></script>
+<script>
+  document.getElementById('admin-login-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('login-btn');
+    const errorBox = document.getElementById('login-error');
+    errorBox.classList.remove('show');
+    btn.textContent = 'Signing in...';
+    btn.disabled = true;
+
+    try {
+      const email = document.getElementById('admin-email').value.trim();
+      const password = document.getElementById('admin-password').value;
+      await adminLogin(email, password);
+      window.location.href = 'dashboard.html';
+    } catch (err) {
+      errorBox.textContent = err.message || 'Invalid email or password';
+      errorBox.classList.add('show');
+      btn.textContent = 'Sign In';
+      btn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>

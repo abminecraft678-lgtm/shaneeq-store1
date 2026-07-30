@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout | Shaneeq</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a href="index.html" class="logo">SHANEEQ<span>.</span></a>
+    <nav class="main-nav"><a href="shop.html">Continue Shopping</a></nav>
+    <div class="nav-icons"><a href="tel:03134356819" class="phone"><i class="fa-solid fa-phone"></i>&nbsp; 0313-4356819</a></div>
+  </div>
+</header>
+
+<section class="page-header">
+  <h1>Checkout</h1>
+  <div class="crumbs"><a href="index.html">Home</a> / <a href="cart.html">Bag</a> / <span>Checkout</span></div>
+</section>
+
+<section class="container" style="padding: 60px 24px 100px; display:grid; grid-template-columns: 1.3fr 1fr; gap:60px;">
+
+  <div>
+    <h3 style="margin-bottom:24px;">Delivery Details</h3>
+    <form id="checkout-form">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="fullName" required>
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" id="phone" placeholder="03XX-XXXXXXX" required>
+        </div>
+        <div class="form-group full">
+          <label>Email (optional)</label>
+          <input type="email" id="email">
+        </div>
+        <div class="form-group full">
+          <label>Delivery Address</label>
+          <textarea id="address" rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+          <label>City</label>
+          <input type="text" id="city" required>
+        </div>
+      </div>
+
+      <div style="background:var(--color-cream); padding:18px 20px; border-radius:8px; margin:10px 0 26px; display:flex; align-items:center; gap:12px;">
+        <i class="fa-solid fa-money-bill-wave" style="font-size:1.4rem; color:var(--color-gold-dark);"></i>
+        <div>
+          <strong>Cash on Delivery</strong>
+          <p style="font-size:0.85rem; color:var(--color-ink-soft);">Pay in cash when your order arrives at your doorstep. This is our only payment method.</p>
+        </div>
+      </div>
+
+      <button type="submit" id="place-order-btn" class="btn btn-primary btn-block">Place Order (Cash on Delivery)</button>
+    </form>
+  </div>
+
+  <div>
+    <h3 style="margin-bottom:24px;">Order Summary</h3>
+    <div id="order-summary-items"></div>
+    <div id="order-totals" style="margin-top:20px;"></div>
+  </div>
+
+</section>
+
+<footer class="site-footer" id="site-footer"></footer>
+
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+<script src="js/footer.js"></script>
+<script src="js/checkout.js"></script>
+</body>
+</html>
