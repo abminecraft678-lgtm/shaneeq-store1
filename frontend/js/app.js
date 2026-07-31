@@ -305,3 +305,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeaderInteractions();
   initScrollReveal();
 });
+window.quickSearch = function(value) {
+    if (value === 'Men' || value === 'Women') {
+        window.location.href = `shop.html?category=${value}`;
+    } else {
+        window.location.href = `shop.html?keyword=${encodeURIComponent(value)}`;
+    }
+};

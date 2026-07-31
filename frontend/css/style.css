@@ -696,3 +696,79 @@ footer, .site-footer {
     background: #000;
     color: #fff;
 }
+/* Nav icons ke darmiyan proper spacing */
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px !important; 
+}
+
+.search-toggle-wrap {
+    position: relative;
+}
+
+/* Search Box Design aur Space Fix */
+.search-box {
+    display: none;
+    position: absolute;
+    top: 45px;
+    right: 0;
+    background: #ffffff;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px;
+    width: 240px;
+}
+
+.search-box.active {
+    display: flex;
+}
+
+.search-box input {
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    border-radius: 4px;
+    outline: none;
+    font-size: 14px;
+    color: #000000 !important;
+    background: #ffffff !important;
+    width: 100%;
+}
+
+.search-box button[type="submit"] {
+    background: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* Quick Search Tags Styling */
+.search-suggestions {
+    display: flex;
+    gap: 6px;
+    margin-top: 4px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.search-suggestions span {
+    background: #f4f4f4;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    color: #444;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.search-suggestions span:hover {
+    background: #000;
+    color: #fff;
+}
