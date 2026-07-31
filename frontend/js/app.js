@@ -245,14 +245,15 @@ function initHeaderInteractions() {
     btn.addEventListener('click', closeDrawers)
   );
 
+
   // Search toggle
-  const searchToggle = document.getElementById('search-toggle');
-  const searchBox = document.getElementById('search-box');
-  searchToggle?.addEventListener('click', (e) => {
+const searchToggle = document.getElementById('search-toggle');
+const searchBox = document.getElementById('search-box');
+searchToggle?.addEventListener('click', (e) => {
     e.stopPropagation();
-    searchBox.classList.toggle('active');
-    searchBox.querySelector('input')?.focus();
-  });
+    searchBox?.classList.toggle('active');
+    searchBox?.querySelector('input')?.focus();
+});
   document.addEventListener('click', (e) => {
     if (searchBox && !searchBox.contains(e.target) && e.target !== searchToggle) {
       searchBox.classList.remove('active');
