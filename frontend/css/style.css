@@ -568,3 +568,22 @@ footer.site-footer { background: var(--color-ink); color: #cfc9bf; padding: 70px
 #mobile-nav-toggle, #mobile-nav-toggle i {
     color: #000000;
 }
+/* Professional Clean Footer */
+footer, .site-footer {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #f9f9f9; /* ya apni pasand ka color */
+    color: #333;
+}
+
+.site-footer p, .site-footer ul {
+    margin: 10px 0;
+    list-style: none;
+    padding: 0;
+}
+
+.site-footer a {
+    color: #555;
+    text-decoration: none;
+    margin: 0 10px;
+}
