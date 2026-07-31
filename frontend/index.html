@@ -35,11 +35,19 @@
     <div class="nav-icons">
       <div class="search-toggle-wrap">
         <button id="search-toggle"><i class="fa-solid fa-magnifying-glass"></i></button>
-        <form class="search-box" id="search-box"
-          <input type="text" placeholder="Search Shaneeq...">
-          <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
-        </form>
-      </div>
+       <form class="search-box" id="search-box">
+    <input type="text" placeholder="Search Shaneeq...">
+    <button type="submit"><i class="fa-solid fa-arrow-right"></i></button>
+    
+    <!-- Clothing & Brand Related Quick Searches -->
+    <div class="search-suggestions">
+        <span onclick="quickSearch('Stitched')">Stitched</span>
+        <span onclick="quickSearch('Unstitched')">Unstitched</span>
+        <span onclick="quickSearch('Men')">Men</span>
+        <span onclick="quickSearch('Women')">Women</span>
+    </div>
+</form> 
+        
       <button id="wishlist-btn"><i class="fa-regular fa-heart"></i><span class="badge" id="wishlist-count">0</span></button>
       <button id="cart-btn"><i class="fa-solid fa-bag-shopping"></i><span class="badge" id="cart-count">0</span></button>
     </div>
