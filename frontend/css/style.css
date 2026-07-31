@@ -564,3 +564,7 @@ footer.site-footer { background: var(--color-ink); color: #cfc9bf; padding: 70px
 .mobile-nav.active { transform: translateX(0); }
 .mobile-nav a { display: block; padding: 14px 0; border-bottom: 1px solid var(--color-line); font-weight: 500; }
 .mobile-nav .close-btn { font-size: 1.4rem; margin-bottom: 20px; }
+/* Hamburger Icon Color Fix */
+#mobile-nav-toggle, #mobile-nav-toggle i {
+    color: #000000;
+}

@@ -24,7 +24,7 @@ async function loadProduct() {
     renderProduct(currentProduct);
     loadReviews(id);
   } catch (err) {
-    wrap.innerHTML = `<p style="padding:60px 0; text-align:center; color:var(--color-muted);">Product not found (${err.message}).</p>`;
+   wrap.innerHTML = `<div style="text-align: center; padding: 60px 20px;"><h3 style="font-size: 24px; color: #333; margin-bottom: 10px;">Product Not Available</h3><p style="color: #666; font-size: 16px;">This product is currently offline or does not exist.</p></div>`;
   }
 }
 

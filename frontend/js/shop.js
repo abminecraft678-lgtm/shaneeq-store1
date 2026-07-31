@@ -48,10 +48,12 @@ async function loadProducts() {
     const data = await apiGet(`/products?${buildQuery()}`);
     resultCount.textContent = `${data.total} product${data.total === 1 ? '' : 's'} found`;
 
-    grid.innerHTML = data.products.length
-      ? data.products.map(productCardHTML).join('')
-      : '<p style="text-align:center; grid-column:1/-1; color:var(--color-muted);">No products match your filters. Try adjusting your search.</p>';
-
+    grid.innerHTML = data.products.length 
+        ? data.products.map(productCardHTML).join('') 
+        : `<div style="text-align: center; padding: 60px 20px; grid-column: 1 / -1;">
+            <h3 style="font-size: 24px; color: #333; margin-bottom: 10px;">New Festive Collection Arriving Soon</h3>
+            <p style="color: #666; font-size: 16px;">We are currently updating our catalog. Stay tuned!</p>
+           </div>`;
     renderPagination(data.pages, data.page);
     initScrollReveal();
   } catch (err) {
