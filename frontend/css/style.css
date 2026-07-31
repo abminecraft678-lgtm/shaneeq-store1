@@ -594,3 +594,40 @@ footer, .site-footer {
 .search-box.active {
     display: block; /* ya opacity: 1; visibility: visible; */
 }
+.search-box {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 20px;
+    background: #ffffff;
+    padding: 10px 15px;
+    border-radius: 6px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    align-items: center;
+    gap: 8px;
+}
+
+.search-box.active {
+    display: flex;
+}
+
+.search-box input {
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    border-radius: 4px;
+    outline: none;
+    font-size: 14px;
+    color: #000000; /* Text ab bilkul saaf kala nazar ayega */
+    background: #ffffff;
+    width: 220px;
+}
+
+.search-box button {
+    background: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
