@@ -587,3 +587,10 @@ footer, .site-footer {
     text-decoration: none;
     margin: 0 10px;
 }
+.search-box {
+    display: none; /* ya opacity: 0; visibility: hidden; */
+}
+
+.search-box.active {
+    display: block; /* ya opacity: 1; visibility: visible; */
+}
