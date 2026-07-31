@@ -631,3 +631,41 @@ footer, .site-footer {
     border-radius: 4px;
     cursor: pointer;
 }
+.search-box {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 20px;
+    background: #ffffff;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    align-items: center;
+    gap: 8px;
+    flex-direction: row; /* Input pehle aur button baad mein rakhne ke liye */
+}
+
+.search-box.active {
+    display: flex;
+}
+
+.search-box input {
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    border-radius: 4px;
+    outline: none;
+    font-size: 14px;
+    color: #000000 !important;
+    background: #ffffff !important;
+    width: 200px;
+}
+
+.search-box button {
+    background: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
