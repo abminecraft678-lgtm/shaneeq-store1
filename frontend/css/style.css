@@ -669,3 +669,30 @@ footer, .site-footer {
     border-radius: 4px;
     cursor: pointer;
 }
+.search-box {
+    flex-direction: column !important; /* Is se tags input ke neche adjust ho jayenge */
+    align-items: flex-start !important;
+}
+
+.search-suggestions {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.search-suggestions span {
+    background: #f4f4f4;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    color: #666;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.search-suggestions span:hover {
+    background: #000;
+    color: #fff;
+}
