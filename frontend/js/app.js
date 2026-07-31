@@ -246,19 +246,27 @@ function initHeaderInteractions() {
   );
 
 
-  // Search toggle
-const searchToggle = document.getElementById('search-toggle');
-const searchBox = document.getElementById('search-box');
-searchToggle?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    searchBox?.classList.toggle('active');
-    searchBox?.querySelector('input')?.focus();
-});
-  document.addEventListener('click', (e) => {
-    if (searchBox && !searchBox.contains(e.target) && e.target !== searchToggle) {
-      searchBox.classList.remove('active');
+  // Global Search Toggle (Works on all pages)
+document.addEventListener('click', (e) => {
+    const toggleBtn = e.target.closest('#search-toggle');
+    const searchBox = document.getElementById('search-box');
+    
+    if (toggleBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (searchBox) {
+            searchBox.classList.toggle('active');
+            if (searchBox.classList.contains('active')) {
+                setTimeout(() => {
+                    searchBox.querySelector('input')?.focus();
+                }, 100);
+            }
+        }
+    } else if (searchBox && !searchBox.contains(e.target) && !e.target.closest('#search-toggle')) {
+        searchBox.classList.remove('active');
     }
-  });
+});
+  
   document.getElementById('search-box')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const input = searchBox?.querySelector('input');
