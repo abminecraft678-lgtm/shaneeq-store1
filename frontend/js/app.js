@@ -261,9 +261,10 @@ searchToggle?.addEventListener('click', (e) => {
   });
   document.getElementById('search-box')?.addEventListener('submit', (e) => {
     e.preventDefault();
-    const q = e.target.querySelector('input').value.trim();
+    const input = searchBox?.querySelector('input');
+    const q = input ? input.value.trim() : '';
     if (q) window.location.href = `shop.html?keyword=${encodeURIComponent(q)}`;
-  });
+});
 
   // Mobile nav
   const mobileToggle = document.getElementById('mobile-nav-toggle');
